@@ -21,7 +21,9 @@ pub mod operations;
 
 use models::*;
 
-pub struct Repo(ObjectRepository<String, DirectoryStore>);
+type Key = String;
+
+pub struct Repo(ObjectRepository<Key, DirectoryStore>);
 
 impl Repo
 {
@@ -45,6 +47,12 @@ impl Repo
         ).unwrap();
 
         Repo(repository)
+    }
+
+    pub fn keys(&mut self)
+        -> impl Iterator<Item = &Key>
+    {
+        self.0.keys()
     }
 }
 

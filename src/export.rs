@@ -67,7 +67,7 @@ pub fn export_voiceset(
 
     for (soundset, sounds) in iter_data
     {
-        let mut ssf_array = Vec::with_capacity(40);
+        let mut ssf_array = Vec::with_capacity(50);
         ssf_array.resize_with(40, Default::default);
         
         sounds
