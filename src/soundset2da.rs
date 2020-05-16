@@ -2,7 +2,6 @@ use nwn_files::types::{
     X2daRow,
     X2daItem,
     X2daError,
-    ResRef,
 };
 
 pub struct Soundset2da {
