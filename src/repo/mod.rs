@@ -56,6 +56,14 @@ impl Repo
     }
 }
 
+impl Drop for Repo
+{
+    fn drop(&mut self)
+    {
+        self.0.commit().unwrap();
+    }
+}
+
 impl_operations!(Soundset, soundset, "soundset_keys");
 impl_operations!(Sound, sound, "sound_keys");
 impl_operations!(Voiceset, voiceset, "voiceset_keys");
