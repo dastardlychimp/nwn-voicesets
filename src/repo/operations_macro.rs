@@ -59,6 +59,17 @@ macro_rules! impl_operations {
                 }
             }
 
+            pub mod update
+            {
+                use super::*;
+
+                pub fn one(repo: &mut Repo, data: &$model)
+                    -> String
+                {
+                    <ModelDB as OperationsUpdate>::one(repo, data)
+                }
+            }
+
             pub mod delete {
                 use super::*;
             

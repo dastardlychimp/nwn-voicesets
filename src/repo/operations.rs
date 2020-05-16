@@ -64,6 +64,22 @@ pub trait OperationsInsert : Operations
     }
 }
 
+pub trait OperationsUpdate : Operations
+{
+    fn one(repo: &mut Repo, value: &Self::Model)
+        -> String
+    {
+        let key = value.key().to_owned();
+
+        assert!(repo.0.contains(&key));
+        
+        let mut o_value = repo.0.insert(key.clone());
+        o_value.serialize(&value).unwrap();
+
+        key
+    }
+}
+
 pub trait OperationsDelete : Operations
 {
     fn one<K: Into<String>>(repo: &mut Repo, key: K)
@@ -98,6 +114,7 @@ impl<T> OperationsSelect for T where T : Operations {}
 impl<T> OperationsInsert for T where T : Operations {}
 impl<T> OperationsDelete for T where T : Operations {}
 impl<T> OperationsCount for T where T : Operations {}
+impl<T> OperationsUpdate for T where T : Operations {}
 
 fn all_keys(repo: &mut Repo, key: &str)
     -> Vec<String>
