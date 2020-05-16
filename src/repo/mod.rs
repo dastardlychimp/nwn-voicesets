@@ -3,7 +3,6 @@ use acid_store::repo::{
     RepositoryConfig,
     Compression,
     LockStrategy,
-    Key,
     OpenRepo,
 };
 
@@ -21,7 +20,6 @@ pub mod models;
 pub mod operations;
 pub mod soundset;
 pub mod sound;
-pub mod export;
 
 pub struct Repo(ObjectRepository<String, DirectoryStore>);
 

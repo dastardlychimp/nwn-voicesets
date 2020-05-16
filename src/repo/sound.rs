@@ -1,11 +1,8 @@
-use acid_store::repo::Key;
-
 use super::Repo;
 use super::models::{
     Sound,
 };
 use super::operations::*;
-use super::key;
 
 pub mod select
 {

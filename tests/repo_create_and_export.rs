@@ -1,6 +1,14 @@
-use nwn_voiceset::repo;
+use nwn_voiceset::{
+    repo,
+    export,
+};
+
+use export::{
+    export_voiceset,
+    ConfigExport,
+};
+
 use repo::models::*;
-use repo::export;
 
 mod helpers;
 
@@ -56,12 +64,12 @@ fn export() {
 
     let key_voiceset = repo::voiceset::insert::one(&mut conn, voiceset);
 
-    let config_export = export::ConfigExport {
+    let config_export = ConfigExport {
         key_voiceset: key_voiceset,
         output_path: PathBuf::from("./tests/outputs/voiceset"),
         file_tlk_alternate: None,
         file_soundset: None,
     };
 
-    export::export_voiceset(&mut conn, config_export).unwrap();
+    export_voiceset(&mut conn, config_export).unwrap();
 }

@@ -1,6 +1,6 @@
 use super::Repo;
 use super::key::HasKey;
-use serde::{Deserialize, Serialize};
+use serde::Serialize;
 use serde::de::DeserializeOwned;
 
 pub trait Operations
