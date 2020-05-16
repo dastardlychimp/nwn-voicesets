@@ -6,7 +6,7 @@ use super::key::{
 
 type Key = String;
 
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug)]
 pub struct Voiceset
 {
     pub key: Key,
@@ -36,7 +36,7 @@ impl HasKey for Voiceset
     }
 }
 
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug)]
 pub struct Soundset
 {
     pub key: Key,
@@ -74,7 +74,7 @@ impl HasKey for Soundset
     }
 }
 
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug)]
 pub struct Sound
 {
     pub key: Key,
