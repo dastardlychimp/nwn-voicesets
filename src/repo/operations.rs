@@ -41,7 +41,7 @@ pub trait OperationsSelect : Operations
 
 pub trait OperationsInsert : Operations
 {
-    fn one(repo: &mut Repo, value: Self::Model)
+    fn one(repo: &mut Repo, value: &Self::Model)
         -> String
     {
         let key = value.key().to_owned();
@@ -52,7 +52,7 @@ pub trait OperationsInsert : Operations
 
         {
             let mut o_value = repo.0.insert(key.clone());
-            o_value.serialize(&value).unwrap();
+            o_value.serialize(value).unwrap();
         }
 
         {

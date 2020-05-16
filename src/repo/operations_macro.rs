@@ -52,10 +52,10 @@ macro_rules! impl_operations {
             {
                 use super::*;
             
-                pub fn one(repo: &mut Repo, voiceset: $model)
+                pub fn one(repo: &mut Repo, data: &$model)
                     -> String
                 {
-                    <ModelDB as OperationsInsert>::one(repo, voiceset)
+                    <ModelDB as OperationsInsert>::one(repo, data)
                 }
             }
 
