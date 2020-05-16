@@ -20,6 +20,18 @@ pub trait OperationsSelect : Operations
             .collect()
     }
 
+    fn many<K>(repo: &mut Repo, keys: &Vec<K>)
+        -> Vec<Self::Model>
+        where K: AsRef<str>
+    {
+        keys
+            .iter()
+            .map(|k| {
+                <Self as OperationsSelect>::one(repo, k)
+            })
+            .collect()
+    }
+
     fn one<K: AsRef<str>>(repo: &mut Repo, key: K)
         -> Self::Model
     {

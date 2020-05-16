@@ -14,12 +14,12 @@ use acid_store::store::{
 
 use std::path::PathBuf;
 
-pub mod voiceset;
 pub mod key;
 pub mod models;
 pub mod operations;
-pub mod soundset;
-pub mod sound;
+#[macro_use] mod operations_macro;
+
+use models::*;
 
 pub struct Repo(ObjectRepository<String, DirectoryStore>);
 
@@ -47,3 +47,7 @@ impl Repo
         Repo(repository)
     }
 }
+
+impl_operations!(Soundset, soundset, "soundset_keys");
+impl_operations!(Sound, sound, "sound_keys");
+impl_operations!(Voiceset, voiceset, "voiceset_keys");
