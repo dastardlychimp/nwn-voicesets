@@ -6,6 +6,8 @@ use acid_store::repo::{
     OpenRepo,
 };
 
+use acid_store::Error as AcidError;
+
 use acid_store::store::{
     DirectoryStore,
     OpenStore,
@@ -54,13 +56,19 @@ impl Repo
     {
         self.0.keys()
     }
+
+    pub fn commit(&mut self)
+        -> Result<(), AcidError>
+    {
+        self.0.commit()
+    }
 }
 
 impl Drop for Repo
 {
     fn drop(&mut self)
     {
-        self.0.commit().unwrap();
+        self.commit().unwrap();
     }
 }
 
