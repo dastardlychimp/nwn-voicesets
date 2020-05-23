@@ -4,6 +4,7 @@ use nwn_files::types::{
     X2daError,
 };
 
+#[derive(Debug)]
 pub struct Soundset2da {
     pub label: Option<String>,
     pub res_ref: Option<String>,
