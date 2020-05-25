@@ -134,7 +134,7 @@ pub fn export_voiceset(
         fs::create_dir(&output_path).unwrap();
     }
 
-    let new_dialog_path = output_path.clone().join("alt_dialog.tlk");
+    let new_dialog_path = output_path.clone().join(format!("{}.tlk", voiceset.name));
     let new_voiceset_path = output_path.clone().join(format!("{}.hak", voiceset.name));
 
     let mut file_dialog = BufWriter::new(fs::File::create(new_dialog_path).unwrap());
