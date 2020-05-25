@@ -73,19 +73,26 @@ pub fn export_voiceset(
         
         sounds
             .into_iter()
+            .filter(|sound| ! sound.sound_data.is_empty())
             .for_each(|sound| {
                 // Add entry to tlk table
                 let res_ref = sound_res_ref(&sound);
 
-                let id = add_dialog(
-                    &mut builder_tlk,
-                    sound.transcription,
-                    Some(res_ref.clone())
-                );
+                let str_ref = if sound.transcription.is_empty() {
+                    None
+                } else {
+                    let id = add_dialog(
+                        &mut builder_tlk,
+                        sound.transcription,
+                        Some(res_ref.clone())
+                    );
+
+                    Some(id as u32)
+                };
 
                 let ssf_entry = SsfEntry {
                     res_ref: res_ref.clone(),
-                    string_ref: Some(id as u32),
+                    string_ref: str_ref,
                 };
 
                 let sound_resource = Resource {
